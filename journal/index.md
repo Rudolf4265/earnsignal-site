@@ -11,6 +11,10 @@ Observations on creator revenue, monetization lag, and income dynamics.
 
 ## Entries
 
+- **[Trusting the Quiet Phase](/journal/2026-02-07-trusting-the-quiet-phase/)**
+  *February 7, 2026* — Publishing into silence isn’t failure. It’s latency.
+
+
 - **[Why Revenue Plateaus Usually Start Before Burnout](/journal/2026-02-03-revenue-plateaus/)**  
   *February 3, 2026* — Plateaus usually come first. Burnout follows.
 
