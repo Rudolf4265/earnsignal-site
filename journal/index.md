@@ -11,6 +11,9 @@ Observations on creator revenue, monetization lag, and income dynamics.
 
 ## Entries
 
+- **[Slow Growth Is Usually a Misdiagnosis](journal/2026-02-16-slow-growth-misdiagnosis/)**
+  *February 7, 2026* — Publishing into silence isn’t failure. It’s latency.
+
 - **[Trusting the Quiet Phase](/journal/2026-02-07-trusting-the-quiet-phase/)**
   *February 7, 2026* — Publishing into silence isn’t failure. It’s latency.
 
