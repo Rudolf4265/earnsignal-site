@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EarnSignal Next.js App (`/web`)
 
-## Getting Started
+This folder contains the App Router Next.js application that should be deployed to Vercel.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Copy `.env.example` to `.env.local` for local development.
+2. Set the same values in Vercel (**Preview** + **Production**) for deployment.
 
-## Learn More
+### Public variables (`NEXT_PUBLIC_*`)
 
-To learn more about Next.js, take a look at the following resources:
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_STREAMLIT_UPLOADER_URL`
+- `NEXT_PUBLIC_TEMPLATES_BASE_URL` (preferred)
+- `NEXT_PUBLIC_API_BASE_URL` (fallback for templates)
+- `NEXT_PUBLIC_CSV_DOCS_URL`
+- `NEXT_PUBLIC_SUPPORT_EMAIL`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Server-only variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `POSTMARK_SERVER_TOKEN`
+- `POSTMARK_FROM_EMAIL`
+- `POSTMARK_TO_EMAIL`
 
-## Deploy on Vercel
+### `/api/notify` behavior
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- If all Postmark variables are present, the endpoint sends mail via Postmark.
+- If any Postmark variable is missing, it logs fallback details server-side and still returns `202`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Vercel deployment setup
+
+In Vercel project settings:
+
+- **Framework Preset:** Next.js
+- **Root Directory:** `web`
+- **Install Command:** `npm install` (or `npm ci`)
+- **Build Command:** `npm run build`
+- **Output Directory:** `.next`
+
+For full steps (including domain wiring and smoke tests), see:
+
+- `../docs/VERCEL_DEPLOYMENT.md`
+
+## Post-deploy smoke tests
+
+Check:
+
+- `/`
+- `/diagnostic`
+- `/upload`
+- `/privacy`
+- `/terms`
+
+Then submit the upload interest form to exercise `/api/notify`.
+
+## Predeploy sanity checks
+
+From repo root:
+
+- `./scripts/web_predeploy_check.ps1` (PowerShell)
+- `./scripts/web_predeploy_check.sh` (bash)
