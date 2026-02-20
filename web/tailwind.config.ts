@@ -6,11 +6,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "var(--bg)",
-        fg: "var(--fg)",
-        muted: "var(--muted)",
-        accent: "var(--accent)",
-        border: "var(--border)",
+        bg: "hsl(var(--bg))",
+        fg: "hsl(var(--fg))",
+        muted: "hsl(var(--muted))",
+        accent: "hsl(var(--accent))",
+        border: "hsl(var(--border))",
       },
     },
   },

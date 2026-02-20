@@ -1,40 +1,17 @@
-@config "../../tailwind.config.ts";
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* CSS variables / tokens */
 :root {
-  --bg: #fbfcfe;
-  --fg: #111827;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --border: #dbe4f0;
+  --bg: 0 0% 100%;
+  --fg: 222.2 84% 4.9%;
+  --muted: 210 40% 96.1%;
+  --accent: 160 84% 39%;
+  --border: 214.3 31.8% 91.4%;
 }
 
-* {
-  box-sizing: border-box;
-}
-
+html,
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-}
-
-a {
-  color: inherit;
-}
-
-.skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -10rem;
-  z-index: 50;
-  border-radius: 0.5rem;
-  background: var(--accent);
-  color: white;
-  padding: 0.5rem 0.75rem;
-}
-
-.skip-link:focus {
-  top: 1rem;
+  height: 100%;
 }
