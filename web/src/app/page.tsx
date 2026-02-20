@@ -1,65 +1,74 @@
-import Image from "next/image";
+import { ButtonLink } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
+import { Container } from "@/components/ui/container";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Container className="py-16 sm:py-24">
+        <p className="mb-3 text-sm font-medium text-accent">Private creator diagnostics</p>
+        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          Signals behind creator revenue & pricing
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg text-muted">
+          We run private diagnostics for Patreon, Substack, and other creator platforms so you can spot pricing gaps,
+          retention patterns, and revenue opportunities.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <ButtonLink href="/diagnostic">See what’s included</ButtonLink>
+          <ButtonLink href="/upload" variant="secondary">
+            Upload CSVs
+          </ButtonLink>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </Container>
+
+      <Container className="grid gap-8 py-10 sm:grid-cols-3">
+        {[
+          ["1", "Share exports", "Upload platform CSV exports from your creator stack."],
+          ["2", "We map and analyze", "We normalize your data and compute pricing and revenue signals."],
+          ["3", "Get action steps", "You receive a concise readout with priorities and suggested tests."],
+        ].map(([step, title, body]) => (
+          <section key={step} className="rounded-lg border border-border bg-white p-5 shadow-sm">
+            <p className="text-sm font-semibold text-accent">Step {step}</p>
+            <h2 className="mt-2 text-xl font-semibold">{title}</h2>
+            <p className="mt-2 text-sm text-muted">{body}</p>
+          </section>
+        ))}
+      </Container>
+
+      <Container className="py-10">
+        <h2 className="text-2xl font-semibold">What you’ll receive</h2>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-muted">
+          <li>Revenue and pricing signal summary across your provided platforms.</li>
+          <li>Segment-level findings on paid conversion, churn risk, and likely upgrade opportunities.</li>
+          <li>Clear recommendations you can execute this week with expected impact windows.</li>
+        </ul>
+      </Container>
+
+      <Container className="py-10">
+        <Callout>
+          <p className="font-medium text-fg">Privacy first</p>
+          <p className="mt-1">Files deleted within 7–14 days. No PII required.</p>
+        </Callout>
+      </Container>
+
+      <Container className="py-10">
+        <h2 className="text-2xl font-semibold">FAQ</h2>
+        <div className="mt-4 space-y-4">
+          <section>
+            <h3 className="font-medium">Which CSV exports should I upload?</h3>
+            <p className="text-sm text-muted">Start with platform export CSVs for subscriptions, payouts, and plan tiers.</p>
+          </section>
+          <section>
+            <h3 className="font-medium">How is my data handled?</h3>
+            <p className="text-sm text-muted">Diagnostics are private. We only keep files for processing, then delete within 7–14 days.</p>
+          </section>
+          <section>
+            <h3 className="font-medium">When do I get results?</h3>
+            <p className="text-sm text-muted">Most diagnostics are delivered within 3–5 business days after clean upload.</p>
+          </section>
         </div>
-      </main>
-    </div>
+      </Container>
+    </>
   );
 }
