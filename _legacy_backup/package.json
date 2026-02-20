@@ -11,9 +11,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "react-hook-form": "^7.71.1",
-    "zod": "^4.3.6"
+    "@11ty/eleventy": "^3.1.2"
   }
 }
