@@ -10,7 +10,6 @@ export const siteEnv = {
     trim(process.env.NEXT_PUBLIC_TEMPLATES_BASE_URL) || templatesFromApi,
   csvDocsUrl: trim(process.env.NEXT_PUBLIC_CSV_DOCS_URL),
   supportEmail: trim(process.env.NEXT_PUBLIC_SUPPORT_EMAIL) || "support@earnsignal.com",
-  journalUrl: trim(process.env.NEXT_PUBLIC_JOURNAL_URL),
 };
 
 export const platforms = [

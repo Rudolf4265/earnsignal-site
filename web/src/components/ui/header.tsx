@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { siteEnv } from "@/lib/env";
 import { Container } from "@/components/ui/container";
 
 const nav = [
@@ -21,11 +20,6 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          {siteEnv.journalUrl ? (
-            <a href={siteEnv.journalUrl} className="hover:text-fg" rel="noreferrer">
-              Journal
-            </a>
-          ) : null}
         </nav>
       </Container>
     </header>
