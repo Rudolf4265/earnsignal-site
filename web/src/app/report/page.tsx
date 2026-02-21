@@ -5,7 +5,7 @@ import type { DiagnosticReportV1 } from "@/lib/contracts/diagnostic";
 import { parseDiagnosticReport } from "@/lib/contracts/diagnostic.zod";
 import { Container } from "@/components/ui/container";
 import { ReportShell } from "@/components/report/ReportShell";
-import { ButtonLink } from "@/components/ui/button";
+import { SessionStorageReport } from "./report-session-storage";
 
 export const metadata: Metadata = {
   title: "Report",
@@ -32,23 +32,7 @@ export default async function ReportPage({
   const isDemo = params.demo === "1";
 
   if (!isDemo) {
-    return (
-      <Container className="py-16">
-        <h1 className="text-3xl font-semibold">Report viewer</h1>
-        <p className="mt-3 max-w-2xl text-muted">
-          Upload wiring coming soon. Use the demo report now, or come back once upload-to-report is enabled for your workspace.
-        </p>
-        <div className="mt-6 rounded-lg border border-border bg-white p-4 text-sm text-muted shadow-sm">
-          {params.platform ? `Selected platform: ${params.platform}` : "No platform selected yet."}
-        </div>
-        <div className="mt-6 flex gap-3">
-          <ButtonLink href="/report?demo=1">View demo report</ButtonLink>
-          <ButtonLink href="/upload" variant="secondary">
-            Go to upload
-          </ButtonLink>
-        </div>
-      </Container>
-    );
+    return <SessionStorageReport />;
   }
 
   const parsed = getParsedReport();
