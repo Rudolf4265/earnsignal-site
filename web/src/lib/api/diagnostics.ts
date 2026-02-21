@@ -14,6 +14,9 @@ type DiagnosticsErrorPayload = {
   errors?: ValidationErrorItem[];
 };
 
+const REQUEST_TIMEOUT_MS = 30_000;
+export const DIAGNOSTICS_TIMEOUT_MESSAGE = "Request timed out after 30 seconds. Please try again.";
+
 export class DiagnosticsApiError extends Error {
   status: number;
   details: string[];
@@ -64,13 +67,29 @@ async function toDiagnosticsError(response: Response): Promise<DiagnosticsApiErr
 }
 
 async function requestDiagnostics(input: RequestInfo, init: RequestInit): Promise<DiagnosticReportV1> {
-  const response = await fetch(input, init);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw await toDiagnosticsError(response);
+  try {
+    const response = await fetch(input, {
+      ...init,
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw await toDiagnosticsError(response);
+    }
+
+    return parseDiagnosticReport(await response.json());
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error(DIAGNOSTICS_TIMEOUT_MESSAGE);
+    }
+
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
-
-  return parseDiagnosticReport(await response.json());
 }
 
 export async function submitDiagnosticsFile(platform: string, file: File): Promise<DiagnosticReportV1> {

@@ -58,7 +58,7 @@ export default async function ReportPage({
 
   return (
     <Container className="py-10 sm:py-14">
-      <ReportShell report={parsed.report} />
+      <ReportShell report={parsed.report} isDemo />
     </Container>
   );
 }

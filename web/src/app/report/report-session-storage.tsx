@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
@@ -10,11 +11,12 @@ import type { DiagnosticReportV1 } from "@/lib/contracts/diagnostic";
 import { parseDiagnosticReport } from "@/lib/contracts/diagnostic.zod";
 
 const SESSION_REPORT_KEY = "earnsignal_diagnostic_report_v1";
+const SESSION_PLATFORM_KEY = "earnsignal_diagnostic_platform";
 
 type LoadState =
   | { status: "loading" }
   | { status: "empty" }
-  | { status: "ready"; report: DiagnosticReportV1 }
+  | { status: "ready"; report: DiagnosticReportV1; loadedFromSession: boolean }
   | { status: "error"; message: string };
 
 const readReportState = (): LoadState => {
@@ -27,7 +29,10 @@ const readReportState = (): LoadState => {
   try {
     const parsedJson = JSON.parse(raw) as unknown;
     const report = parseDiagnosticReport(parsedJson);
-    return { status: "ready", report };
+    sessionStorage.removeItem(SESSION_REPORT_KEY);
+    sessionStorage.removeItem(SESSION_PLATFORM_KEY);
+
+    return { status: "ready", report, loadedFromSession: true };
   } catch (error) {
     return {
       status: "error",
@@ -37,6 +42,7 @@ const readReportState = (): LoadState => {
 };
 
 export function SessionStorageReport() {
+  const router = useRouter();
   const [state, setState] = useState<LoadState>({ status: "loading" });
 
   useEffect(() => {
@@ -44,6 +50,12 @@ export function SessionStorageReport() {
       setState(readReportState());
     });
   }, []);
+
+  const clearAndReturnToUpload = () => {
+    sessionStorage.removeItem(SESSION_REPORT_KEY);
+    sessionStorage.removeItem(SESSION_PLATFORM_KEY);
+    router.push("/upload");
+  };
 
   if (state.status === "loading") {
     return (
@@ -87,7 +99,11 @@ export function SessionStorageReport() {
 
   return (
     <Container className="py-10 sm:py-14">
-      <ReportShell report={state.report} />
+      <ReportShell
+        report={state.report}
+        loadedFromSession={state.loadedFromSession}
+        onClearReport={clearAndReturnToUpload}
+      />
     </Container>
   );
 }

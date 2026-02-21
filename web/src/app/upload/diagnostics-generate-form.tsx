@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { DiagnosticsApiError, submitDiagnosticsFile, submitDiagnosticsUrl } from "@/lib/api/diagnostics";
+import {
+  DIAGNOSTICS_TIMEOUT_MESSAGE,
+  DiagnosticsApiError,
+  submitDiagnosticsFile,
+  submitDiagnosticsUrl,
+} from "@/lib/api/diagnostics";
 import { platforms, siteEnv, type PlatformSlug } from "@/lib/env";
 
 type FormErrors = {
@@ -95,7 +100,11 @@ export function DiagnosticsGenerateForm() {
         setApiError(error.message);
         setApiErrorDetails(error.details);
       } else if (error instanceof Error) {
-        setApiError(error.message);
+        if (error.message === DIAGNOSTICS_TIMEOUT_MESSAGE) {
+          setApiError("The report is taking longer than expected. Try again, or check your file size and network.");
+        } else {
+          setApiError(error.message);
+        }
       } else {
         setApiError("Could not generate report right now. Please try again.");
       }
