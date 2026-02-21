@@ -14,6 +14,8 @@ export const siteEnv = {
   csvDocsUrl: trim(process.env.NEXT_PUBLIC_CSV_DOCS_URL),
   supportEmail: trim(process.env.NEXT_PUBLIC_SUPPORT_EMAIL) || "support@earnsignal.com",
   apiBaseUrl,
+  supabaseUrl: trim(process.env.NEXT_PUBLIC_SUPABASE_URL),
+  supabaseAnonKey: trim(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
   diagnosticsUploadEnabled,
   diagnosticsReportPath,
 };
