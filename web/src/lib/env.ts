@@ -2,6 +2,8 @@ const trim = (value?: string | null) => value?.trim() || "";
 
 const apiBaseUrl = trim(process.env.NEXT_PUBLIC_API_BASE_URL);
 const templatesFromApi = apiBaseUrl ? `${apiBaseUrl.replace(/\/$/, "")}/v1/templates` : "";
+const diagnosticsReportPath = trim(process.env.NEXT_PUBLIC_DIAGNOSTICS_REPORT_PATH) || "/report";
+const diagnosticsUploadEnabled = trim(process.env.NEXT_PUBLIC_ENABLE_DIAGNOSTICS_UPLOAD) === "1";
 
 export const siteEnv = {
   siteUrl: trim(process.env.NEXT_PUBLIC_SITE_URL) || "https://earnsignal.com",
@@ -10,6 +12,9 @@ export const siteEnv = {
     trim(process.env.NEXT_PUBLIC_TEMPLATES_BASE_URL) || templatesFromApi,
   csvDocsUrl: trim(process.env.NEXT_PUBLIC_CSV_DOCS_URL),
   supportEmail: trim(process.env.NEXT_PUBLIC_SUPPORT_EMAIL) || "support@earnsignal.com",
+  apiBaseUrl,
+  diagnosticsUploadEnabled,
+  diagnosticsReportPath,
 };
 
 export const platforms = [

@@ -1,0 +1,228 @@
+{
+  "report_id": "rpt_2026_01_demo_001",
+  "creator_id": "creator_8732",
+  "generated_at": "2026-01-14T15:04:00Z",
+  "period": {
+    "start_month": "2025-08",
+    "end_month": "2026-01",
+    "months_included": 6
+  },
+  "platforms_included": ["patreon"],
+  "snapshot": {
+    "mrr_current_cents": 548200,
+    "mrr_trend_3mo_pct": 12.4,
+    "active_subs_current": 728,
+    "arpu_cents": 753,
+    "monthly_churn_rate_pct": 5.8,
+    "stage": "growth",
+    "stage_thresholds": {
+      "early_stage_max_mrr_cents": 100000,
+      "mid_size_max_mrr_cents": 300000,
+      "growth_max_mrr_cents": 1000000
+    }
+  },
+  "executive_summary": {
+    "primary_growth_lever": "retention",
+    "momentum": "accelerating",
+    "top_insights": [
+      {
+        "code": "retention_decline_paid_tier",
+        "title": "Retention softness in mid-tier members",
+        "detail": "The $8 tier shows above-baseline churn for three consecutive months, suggesting messaging and value packaging need reinforcement.",
+        "severity": "warn",
+        "evidence": {
+          "tier": "supporter",
+          "avg_churn_rate_pct_3mo": 6.3,
+          "baseline_churn_rate_pct": 4.9
+        }
+      },
+      {
+        "code": "mrr_momentum_positive",
+        "title": "MRR trend is climbing despite churn",
+        "detail": "MRR rose each month from October through January, indicating acquisition still outpaces cancellations.",
+        "severity": "info",
+        "evidence": {
+          "mrr_aug_cents": 432000,
+          "mrr_jan_cents": 548200,
+          "months_up": 4
+        }
+      },
+      {
+        "code": "behind_scenes_converts_best",
+        "title": "Behind-the-scenes content leads conversion",
+        "detail": "Behind-the-scenes posts produce the highest paid signups per post and should anchor the top-of-funnel cadence.",
+        "severity": "info",
+        "evidence": {
+          "content_type": "behind_the_scenes",
+          "conversion_rate_pct": 3.9,
+          "paid_signups": 34
+        }
+      }
+    ],
+    "metrics_highlights": {
+      "churn_band": "needs_work",
+      "conversion_band": "average",
+      "arpu_band": "on_track"
+    },
+    "confidence": "medium"
+  },
+  "growth_retention": {
+    "mrr_series": [
+      { "month": "2025-08", "value": 432000 },
+      { "month": "2025-09", "value": 451400 },
+      { "month": "2025-10", "value": 476300 },
+      { "month": "2025-11", "value": 500200 },
+      { "month": "2025-12", "value": 524100 },
+      { "month": "2026-01", "value": 548200 }
+    ],
+    "subs_series": [
+      { "month": "2025-08", "value": 612 },
+      { "month": "2025-09", "value": 640 },
+      { "month": "2025-10", "value": 668 },
+      { "month": "2025-11", "value": 689 },
+      { "month": "2025-12", "value": 708 },
+      { "month": "2026-01", "value": 728 }
+    ],
+    "new_subs_series": [
+      { "month": "2025-08", "value": 61 },
+      { "month": "2025-09", "value": 58 },
+      { "month": "2025-10", "value": 64 },
+      { "month": "2025-11", "value": 62 },
+      { "month": "2025-12", "value": 66 },
+      { "month": "2026-01", "value": 70 }
+    ],
+    "cancelled_subs_series": [
+      { "month": "2025-08", "value": 33 },
+      { "month": "2025-09", "value": 30 },
+      { "month": "2025-10", "value": 31 },
+      { "month": "2025-11", "value": 41 },
+      { "month": "2025-12", "value": 47 },
+      { "month": "2026-01", "value": 50 }
+    ],
+    "churn_rate_series_pct": [
+      { "month": "2025-08", "value": 5.4 },
+      { "month": "2025-09", "value": 4.8 },
+      { "month": "2025-10", "value": 4.9 },
+      { "month": "2025-11", "value": 5.9 },
+      { "month": "2025-12", "value": 6.4 },
+      { "month": "2026-01", "value": 5.8 }
+    ],
+    "narrative": "Subscriber growth remains healthy, but cancellations have climbed with scale. Focused retention interventions in the first 30 days should reduce churn and increase compounding MRR gains.",
+    "summary_table": [
+      { "month": "2025-08", "mrr_cents": 432000, "active_subs": 612, "new_subs": 61, "cancelled_subs": 33, "net_subs_change": 28, "churn_rate_pct": 5.4 },
+      { "month": "2025-09", "mrr_cents": 451400, "active_subs": 640, "new_subs": 58, "cancelled_subs": 30, "net_subs_change": 28, "churn_rate_pct": 4.8 },
+      { "month": "2025-10", "mrr_cents": 476300, "active_subs": 668, "new_subs": 64, "cancelled_subs": 31, "net_subs_change": 33, "churn_rate_pct": 4.9 },
+      { "month": "2025-11", "mrr_cents": 500200, "active_subs": 689, "new_subs": 62, "cancelled_subs": 41, "net_subs_change": 21, "churn_rate_pct": 5.9 },
+      { "month": "2025-12", "mrr_cents": 524100, "active_subs": 708, "new_subs": 66, "cancelled_subs": 47, "net_subs_change": 19, "churn_rate_pct": 6.4 },
+      { "month": "2026-01", "mrr_cents": 548200, "active_subs": 728, "new_subs": 70, "cancelled_subs": 50, "net_subs_change": 20, "churn_rate_pct": 5.8 }
+    ]
+  },
+  "content_performance": {
+    "by_type": [
+      {
+        "content_type": "behind_the_scenes",
+        "posts": 14,
+        "views": 8540,
+        "paid_signups": 34,
+        "conversion_rate_pct": 3.9,
+        "tier_upgrades": 11
+      },
+      {
+        "content_type": "livestream_qna",
+        "posts": 6,
+        "views": 3670,
+        "paid_signups": 9,
+        "conversion_rate_pct": 2.1,
+        "tier_upgrades": 5
+      }
+    ],
+    "best_type": "behind_the_scenes",
+    "overall_conversion_rate_pct": 3.2,
+    "notes": [
+      "Livestream replay clips improved signup quality but had lower conversion volume.",
+      "Adding explicit CTA text in post intros lifted paid signups in January."
+    ]
+  },
+  "recommendations": {
+    "blocks": [
+      {
+        "title": "Stabilize first-30-day retention",
+        "why_it_matters": "Early churn drives the majority of monthly cancellations and suppresses compounding growth.",
+        "what_to_do": [
+          "Create a 3-message onboarding sequence for new subscribers in week one.",
+          "Add a retention offer at day 21 for at-risk members.",
+          "Track 30-day save rate weekly in your ops sheet."
+        ],
+        "expected_impact": "Reduce churn by 0.8 to 1.2 points over 6–8 weeks.",
+        "numbers": {
+          "current_monthly_churn_rate_pct": 5.8,
+          "target_churn_rate_pct": 4.9
+        },
+        "priority": "p0"
+      },
+      {
+        "title": "Double down on best converting content format",
+        "why_it_matters": "Behind-the-scenes content already outperforms other formats on paid conversion and upgrade intent.",
+        "what_to_do": [
+          "Increase behind-the-scenes output from 14 to 20 posts per month.",
+          "Package 2 premium mini-series per month tied to top fan questions.",
+          "Reuse top-performing clips in conversion-oriented email nudges."
+        ],
+        "expected_impact": "Add 12–18 incremental paid signups monthly.",
+        "numbers": {
+          "current_posts": 14,
+          "target_posts": 20,
+          "avg_signups_per_post": 2.4
+        },
+        "priority": "p1"
+      },
+      {
+        "title": "Prepare pricing test for Q2",
+        "why_it_matters": "ARPU is on track but can be lifted with better tier framing before scale plateaus.",
+        "what_to_do": [
+          "A/B test a revised mid-tier value proposition and benefit stack.",
+          "Introduce annual prepay option with limited-time bonus.",
+          "Benchmark plan attach rate weekly during experiment window."
+        ],
+        "expected_impact": "Increase ARPU by 5–8% if attach rate improves by 2 points.",
+        "numbers": {
+          "current_arpu_cents": 753,
+          "target_arpu_cents": 800,
+          "test_window_weeks": 6
+        },
+        "priority": "p2"
+      }
+    ]
+  },
+  "milestone_gameplan": {
+    "current_mrr_cents": 548200,
+    "target_mrr_cents": 750000,
+    "net_new_mrr_needed_cents": 201800,
+    "arpu_cents": 753,
+    "net_new_subs_needed": 268,
+    "monthly_churn_subs": 42,
+    "gross_new_subs_needed": 310,
+    "assumptions": {
+      "churn_rate_pct_used": 5.8,
+      "arpu_used_cents": 753,
+      "time_horizon_months": 6
+    },
+    "explanation": "To reach $7,500 MRR in six months, you need approximately 268 net-new subscribers at current ARPU. Accounting for expected churn over the same period, gross acquisition should target roughly 310 subscribers."
+  },
+  "warnings": [
+    {
+      "code": "missing_view_counts_for_legacy_posts",
+      "message": "Older posts from August may have incomplete view counts; conversion rates could be understated.",
+      "severity": "warn"
+    }
+  ],
+  "inputs_summary": {
+    "months_present": 6,
+    "months_missing": 0,
+    "rows_consumed": 1294,
+    "notes": [
+      "Billing export timezone normalized to UTC.",
+      "Refunded transactions excluded from net-new MRR calculations."
+    ]
+  }
+}
