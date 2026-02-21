@@ -47,6 +47,14 @@ export default function DiagnosticPage() {
       </section>
 
       <section className="mt-10">
+        <h2 className="text-xl font-semibold">Preview the report experience</h2>
+        <p className="mt-2 text-sm text-muted">See an end-to-end example report rendered from the v1 contract.</p>
+        <a href="/report?demo=1" className="mt-3 inline-block text-sm font-medium text-accent hover:underline">
+          View example report
+        </a>
+      </section>
+
+      <section className="mt-10">
         <h2 className="text-xl font-semibold">Schema docs</h2>
         {siteEnv.csvDocsUrl ? (
           <a href={siteEnv.csvDocsUrl} className="mt-2 inline-block text-sm text-accent hover:underline" target="_blank" rel="noreferrer">

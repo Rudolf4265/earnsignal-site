@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { TemplateLinks } from "@/components/template-links";
 import { UploadInterestForm } from "@/components/upload-interest-form";
-import { ButtonLink } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Container } from "@/components/ui/container";
 import { siteEnv } from "@/lib/env";
@@ -28,6 +28,18 @@ export default function UploadPage() {
           </span>
         )}
       </div>
+
+      <section className="mt-10 rounded-xl border border-border bg-white p-5 shadow-sm">
+        <h2 className="text-xl font-semibold">Coming next</h2>
+        <p className="mt-2 text-sm text-muted">
+          v1 uses the Streamlit uploader for secure intake. In vNext, this page will generate your full diagnostic report directly in-app.
+        </p>
+        <div className="mt-4">
+          <Button disabled className="cursor-not-allowed opacity-60">
+            Generate report (coming soon)
+          </Button>
+        </div>
+      </section>
 
       <UploadInterestForm />
 
