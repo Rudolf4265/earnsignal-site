@@ -3,7 +3,8 @@ const trim = (value?: string | null) => value?.trim() || "";
 const apiBaseUrl = trim(process.env.NEXT_PUBLIC_API_BASE_URL);
 const templatesFromApi = apiBaseUrl ? `${apiBaseUrl.replace(/\/$/, "")}/v1/templates` : "";
 const diagnosticsReportPath = trim(process.env.NEXT_PUBLIC_DIAGNOSTICS_REPORT_PATH) || "/report";
-const diagnosticsUploadEnabled = trim(process.env.NEXT_PUBLIC_ENABLE_DIAGNOSTICS_UPLOAD) === "1";
+const uploadFlag = trim(process.env.NEXT_PUBLIC_ENABLE_DIAGNOSTICS_UPLOAD).toLowerCase();
+const diagnosticsUploadEnabled = uploadFlag === "1" || uploadFlag === "true";
 
 export const siteEnv = {
   siteUrl: trim(process.env.NEXT_PUBLIC_SITE_URL) || "https://earnsignal.com",
