@@ -21,13 +21,12 @@ export const siteEnv = {
 };
 
 export const platforms = [
-  "instagram",
-  "youtube",
-  "tiktok",
-  "onlyfans",
   "patreon",
   "substack",
-  "passes",
+  "youtube",
+  "instagram",
+  "tiktok",
+  "onlyfans",
 ] as const;
 
 export type PlatformSlug = (typeof platforms)[number];

@@ -1,13 +1,27 @@
-import { redirect } from "next/navigation";
 import { AppShell } from "@/components/app/components";
-import { getAuthFromCookies } from "@/lib/supabase";
 import { SidebarNav, Topbar } from "./shell-nav";
+import { loadMe, requireAuth } from "./data";
 
 export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const auth = await getAuthFromCookies();
-  if (!auth) {
-    redirect("/login");
-  }
+  const { user, supabase } = await requireAuth();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  return <AppShell sidebar={<SidebarNav />} topbar={<Topbar email={auth.user.email} />}>{children}</AppShell>;
+  const meData = await loadMe(session?.access_token ?? "");
+
+  return (
+    <AppShell
+      sidebar={<SidebarNav />}
+      topbar={
+        <Topbar
+          email={user.email}
+          demoMode={meData.demoMode}
+          dataQualityLabel={`Data quality ${meData.me.dataQualityScore}/100`}
+        />
+      }
+    >
+      {children}
+    </AppShell>
+  );
 }
