@@ -4,18 +4,19 @@ import { adaptDashboard, adaptMe, adaptReportDetail, adaptReports } from "@/lib/
 import { fetchDashboard, fetchMe, fetchReportDetail, fetchReports } from "@/lib/api";
 import { mockDashboard, mockMe, mockReportDetail, mockReports } from "@/lib/mockData";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { type CookieOptions } from "@supabase/ssr";
 
 async function getSupabaseServerClient() {
   const cookieStore = await cookies();
   return createServerSupabaseClient({
-    get(name) {
-      return cookieStore.get(name);
+    get(name: string): string | undefined {
+      return cookieStore.get(name)?.value;
     },
-    set(name, value, options) {
-      cookieStore.set(name, value, options);
+    set(name: string, value: string, options: CookieOptions): void {
+      cookieStore.set({ name, value, ...options });
     },
-    remove(name, options) {
-      cookieStore.set(name, "", { ...options, maxAge: 0 });
+    remove(name: string, options: CookieOptions): void {
+      cookieStore.set({ name, value: "", ...options, maxAge: 0 });
     },
   });
 }

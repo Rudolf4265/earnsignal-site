@@ -1,7 +1,7 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 type CookieStore = {
-  get(name: string): { value: string } | undefined;
+  get(name: string): string | undefined;
   set(name: string, value: string, options: CookieOptions): void;
   remove(name: string, options: CookieOptions): void;
 };
@@ -16,13 +16,13 @@ export function createServerSupabaseClient(cookieStore: CookieStore) {
 
   return createServerClient(url, anonKey, {
     cookies: {
-      get(name) {
-        return cookieStore.get(name)?.value;
+      get(name: string): string | undefined {
+        return cookieStore.get(name);
       },
-      set(name, value, options) {
+      set(name: string, value: string, options: CookieOptions): void {
         cookieStore.set(name, value, options);
       },
-      remove(name, options) {
+      remove(name: string, options: CookieOptions): void {
         cookieStore.remove(name, options);
       },
     },
