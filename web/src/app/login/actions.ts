@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { type CookieOptions } from "@supabase/ssr";
 
 function siteUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -18,14 +19,14 @@ export async function signInWithPassword(_: string | null, formData: FormData) {
 
   const cookieStore = await cookies();
   const supabase = createServerSupabaseClient({
-    get(name) {
-      return cookieStore.get(name);
+    get(name: string): string | undefined {
+      return cookieStore.get(name)?.value;
     },
-    set(name, value, options) {
-      cookieStore.set(name, value, options);
+    set(name: string, value: string, options: CookieOptions): void {
+      cookieStore.set({ name, value, ...options });
     },
-    remove(name, options) {
-      cookieStore.set(name, "", { ...options, maxAge: 0 });
+    remove(name: string, options: CookieOptions): void {
+      cookieStore.set({ name, value: "", ...options, maxAge: 0 });
     },
   });
 
@@ -46,14 +47,14 @@ export async function signInWithOtp(_: string | null, formData: FormData) {
 
   const cookieStore = await cookies();
   const supabase = createServerSupabaseClient({
-    get(name) {
-      return cookieStore.get(name);
+    get(name: string): string | undefined {
+      return cookieStore.get(name)?.value;
     },
-    set(name, value, options) {
-      cookieStore.set(name, value, options);
+    set(name: string, value: string, options: CookieOptions): void {
+      cookieStore.set({ name, value, ...options });
     },
-    remove(name, options) {
-      cookieStore.set(name, "", { ...options, maxAge: 0 });
+    remove(name: string, options: CookieOptions): void {
+      cookieStore.set({ name, value: "", ...options, maxAge: 0 });
     },
   });
 
